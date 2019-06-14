@@ -14,23 +14,31 @@ also out of scope.
 - Dom0less device tree configuration
 
 
+# Xen - Bootloader interfaces
+
+- multiboot
+- Xen boot protocol
+
+
 # From a DomU perspective
 
-- kernel and ramdisk image format
+- kernel image format
 - boot protocol
 - device tree
 - memory map: location of memory and other resources
 - exposed devices
-  - GIC interrupt contoller
+  - GIC interrupt controller
   - Generic Timer
   - virtual UART (PL011)
 - PSCI
+- hypercall protocol (i.e. registers, etc.)
+- memory sharing (i.e. memory/cache attributes)
 
 
 # Hypercalls exposed to all DomUs
 
 These hypercalls are unused by dom0less DomUs, however, they are
-still exposed, at least partially, to all domUs.
+still exposed to all domUs.
 
 - memory_op
 - sched_op
@@ -39,6 +47,7 @@ still exposed, at least partially, to all domUs.
 - multicall
 - platform_op
 - vcpu_op
+- physdev_op (NOP on Arm)
 
 
 # PV drivers interfaces
