@@ -1,11 +1,12 @@
 # Intro
 
-What are the interfaces that we need to fully document in a dom0less
-deployment for safety certifications?
+This document covers the external interfaces in a dom0less deployment
+that we need to document for safety certifications.
 
 Dom0 and Xen userspace tools, such as xl and libxl, are out of scope for
 now, we are only discussing the hypervisor. vm_assist, xsm, argo are
-also out of scope.
+also out of scope: the assumption is that they will disabled via
+kconfig.
 
 
 # From the user perspective
@@ -37,7 +38,7 @@ also out of scope.
 
 # Hypercalls exposed to all DomUs
 
-These hypercalls are unused by dom0less DomUs, however, they are
+These hypercalls are unused by dom0less domUs, however, they are
 still exposed to all domUs.
 
 - memory_op
@@ -51,6 +52,10 @@ still exposed to all domUs.
 
 
 # PV drivers interfaces
+
+Dom0less domUs cannot use PV drivers today. However, these interfaces
+are still exposed to them, and one day they might be able to use them
+correctly:
 
 - hypercalls
   - console_io
